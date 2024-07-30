@@ -79,30 +79,40 @@ const Navbar = () => {
       >
         <div className="flex flex-col md:flex-row md:items-center md:justify-end gap-2 md:gap-3 mt-3 md:mt-0 py-2 md:py-0 md:ps-7">
           <Link
-            className={"py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 font-medium text-gray-800 focus:outline-none dark:border-neutral-200 dark:text-neutral-200" + (path === '/' ? 'border-gray-800' : 'border-transparent')}
+            className={"py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 font-medium text-gray-800 focus:outline-none  " + (path === '/' ? 'border-neutral-200 text-neutral-200' : 'border-transparent text-neutral-400')}
 
             href="/"
             aria-current="page"
           >
             Home
           </Link>
+
           <Link
-            className="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-white hover:text-gray-800 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200"
-            href="/contact"
-          >
-            contact
-          </Link>
-          <Link
-            className="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-white hover:text-gray-800 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200"
+            className={"py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 font-medium text-gray-800 focus:outline-none  " + (path === '/login' ? 'border-neutral-200 text-neutral-200' : 'border-transparent text-neutral-400')}
+
             href="/login"
+            aria-current="page"
           >
             Login
+          
           </Link>
           <Link
-            className="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-white hover:text-gray-800 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200"
+            className={"py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 font-medium text-gray-800 focus:outline-none  " + (path === '/sign-up' ? 'border-neutral-200 text-neutral-200' : 'border-transparent text-neutral-400')}
+
             href="/sign-up"
+            aria-current="page"
           >
-            Sign-up
+            Signup
+          
+          </Link>
+          <Link
+            className={"py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 font-medium text-gray-800 focus:outline-none  " + (path === '/contact' ? 'border-neutral-200 text-neutral-200' : 'border-transparent text-neutral-400')}
+
+            href="/contact"
+            aria-current="page"
+          >
+            Contact
+          
           </Link>
         </div>
       </div>
