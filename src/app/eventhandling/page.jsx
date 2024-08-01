@@ -20,7 +20,7 @@ const previewImage = (e) => {
 }
 
   return (
-    <div className='max-w-3xl mx-auto my-10 '
+    <div className='border border-black max-w-3xl mx-auto my-10'
 
     onMouseMove={ e => {
         document.getElementById('circle').style.left = e.clientX -20 +'px';
@@ -30,7 +30,7 @@ const previewImage = (e) => {
         <div id='circle'
         onMouseMove={ (e) => {e.target.style.height ='30px'; e.target.style.width ='30px'}}
         onMouseUp={ (e) => {e.target.style.height ='46px'; e.target.style.width ='46px'}}
-        className='absolute duration-300 rounded-full size-12 border border-black' ></div>
+        className='absolute duration-00 rounded-full size-12 border border-black' ></div>
 
         <button 
         onClick={() => {alert('Button was Clicked')} } 
