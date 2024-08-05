@@ -27,8 +27,23 @@ const Todolist = () => {
     const addTask = (e) => {
         if (e.code === 'Enter'){
             console.log(e.target.value);
+            const newTask = { text:e.target.value, completed:false, added:new Date() };
+            setTaskList([ newTask ,...tasklist]);
             e.target.value = '';
         }
+    }
+    
+    const deleteTask = (index) =>{
+     console.log(index);
+     const temp = tasklist;
+     temp.splice(index,1);
+    setTaskList([...temp])
+    }
+
+    const toggleCompleted = (index) =>{
+        const temp = tasklist;
+        temp[index].complete = !temp[index].complete;
+        setTaskList([...temp]);
     }
 
   return (
@@ -51,11 +66,24 @@ const Todolist = () => {
                 </button> */}
                 {
                 tasklist.map((task,index) => { return(
-                    <div key={index} className='rounded-md border mb-5 bg-gray-200 shadow p-4'>
+                    <div key={index} className='rounded-md border mb-5 bg-gray-200 shadow p-4 bg-gray-200'>
+                        {
+                            task.complete ? (
+                                <p className='bg-green-500 text-white rounded-full text-sm px-2 w-fit'>completed</p>
+                            ):(
+                                <p className='bg-blue-500 text-white rounded-full text-sm px-2 w-fit'>pending</p>
+                            )
+                        }
                         <p>{task.text}</p>
                         <div className='mt-2 flex justify-end gap-4'>
-                            <button className='bg-blue-500 text-white px-2 py-1 rounded-full'>Complete</button>
-                            <button className='bg-red-500 text-white px-2 py-1 rounded-full'>Delete</button>
+                            <button 
+                            onClick={() => {toggleCompleted(index)}}
+                            className='bg-blue-500 text-white px-2 py-1 rounded-full'>
+                               {task.complete ? 'mark as pending':'mark as complete'}  
+                            </button>
+                            <button 
+                            onClick={() =>{deleteTask(index)}}
+                            className='bg-red-500 text-white px-2 py-1 rounded-full'>Delete</button>
                         </div>
                     </div>
                 ) })
