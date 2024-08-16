@@ -1,8 +1,10 @@
 'use client'
 
 import { IconCircle, IconCircleCheck, IconLoader } from '@tabler/icons-react';
+import axios from 'axios';
 import { useFormik } from 'formik'
 import React from 'react'
+import toast from 'react-hot-toast';
 import * as Yup from 'yup';
 
 const SignupSchema = Yup.object().shape({
@@ -32,13 +34,24 @@ const page = () => {
     },
     onSubmit: (values , {resetForm,setSubmitting}) => {
 
-      setTimeout(() => {
-        console.log(values);
-        setSubmitting(false)
-      }, 3000);
+      // setTimeout(() => {
+      //   console.log(values);
+      //   setSubmitting(false)
+      // }, 3000);
 
-      console.log(values);
-      
+      // console.log(values);
+
+      // making a request
+      axios.post('http://localhost:5000/user/add',values)
+      .then((response)=>{
+        console.log(response.status)
+        resetForm()
+        toast.success('user registered successfully')
+      }).catch((err)=>{
+        console.log(err.response?.data);
+        setSubmitting(false)
+        toast.error(err?.response?.data?.message)
+      })
     },
     validationSchema: SignupSchema
   });
