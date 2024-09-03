@@ -1,30 +1,43 @@
-import React from 'react'
-import classes from './login.module.css'
-import Input from '@/components/Input'
-import Button from '@/components/Button'
+import React from 'react';
+import classes from './login.module.css';
+import Input from '@/components/Input';
+import Button from '@/components/Button';
+import { useFormik } from 'formik';
 
-const login = () => {       
+const Login = () => {
+
+  const loginForm = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    }
+  })
+
   return (
     <div>
-      <h1 className='text-center text-2xl  font-bold'> login page</h1>
-      <button className='btn'>Login Button</button>
+      <h1 className='text-center text-2xl font-bold'>Login Page</h1>
+      <button className='btn'>Login button</button>
       <button className={classes.myBtn}>Module CSS</button>
-      
-      <Input id={'name'} label={'Full Name'} type={'text'}/>
-      
-      <Input id={'email'} label={'Email Address'} type={'email'}/>
-      
-      <Input id={'password'} label={'password'} type={'password'}/>
 
-      <Button>Login page</Button>
+      <form onSubmit={loginForm.handleSubmit}>
+
+        <input id={'email'} onChange={loginForm.handleChange}
+          value={loginForm.values.email} type={'email'} />
+
+        <input id={'password'} onChange={loginForm.handleChange}
+          value={loginForm.values.email} type={'password'} />
+
+        <button type='submit'>Submit</button>
       
-      
-      
-      
-      
-      
+      </form>
+
+      <Button>Login</Button>
+
     </div>
   )
 }
 
-export default login;
+export default Login;
